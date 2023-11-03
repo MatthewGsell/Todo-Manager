@@ -50,3 +50,12 @@ li {
 ::-webkit-scrollbar {
   display: none;
 }
+.selectedfolder {
+  background-color: aquamarine;
+}
+.btn-secondary {
+  background-color: rgb(82, 29, 29);
+}
+.hidden {
+  display: none;
+}

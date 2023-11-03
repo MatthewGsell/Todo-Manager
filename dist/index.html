@@ -32,14 +32,16 @@
                   type="text"
                   class="form-control"
                   placeholder="Folder Name"
+                  id="foldernameinput" minlength="1" maxlength="30"
                 />
-                <button class="btn btn-primary">Create Folder</button>
+                <button class="btn btn-primary" id='createfolderbutton'>Create Folder</button>
+                <button class="btn btn-secondary hidden" id="deletefolderbutton">Delete</button>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12" id="folderlist">
-              <ul class="list-group">
+              <ul class="list-group" id="folderlistgroup">
                 <li class="list-group-item">
                   jjjjjjjjjjjjjjjjj]zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
                 </li>
@@ -62,7 +64,7 @@
         </div>
         <div class="col-8" id="todomanager">
           <div class="row">
-            <div class="col-12" id="createtodo">
+            <div class="col-12" id="createto">
               <div class="input-group">
                 <input
                   type="text"
@@ -77,13 +79,13 @@
                   <option value="3">High</option>
                 </select>
                 <input type="date" class="form-control" id="dateselect" />
-                <button class="btn btn-primary">Create Todo</button>
+                <button class="btn btn-primary" id='createtodobutton'>Create Todo</button>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12" id="todolist">
-              <ul class="list-group">
+              <ul class="list-group" id="todolistgroup">
                 <li class="list-group-item">An item</li>
                 <li class="list-group-item">A second item</li>
                 <li class="list-group-item">A third item</li>
