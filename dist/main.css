@@ -1,0 +1,52 @@
+html {
+  height: 100vh;
+}
+body {
+  height: 100vh;
+}
+
+#headerrow {
+  height: 10%;
+}
+#headercol {
+  display: flex;
+  font-family: "Patua One", serif;
+  font-family: "Roboto", sans-serif;
+  font-size: x-large;
+  font-weight: 900;
+  align-items: center;
+  justify-content: center;
+  background-color: #2f6690;
+  color: white;
+}
+#bodyrow {
+  min-height: 90%;
+  background-color: #d9dcd6;
+}
+#bodyrow > div + div {
+  border-left: 0.5vw solid rgba(0, 0, 0, 0.1);
+}
+#foldermanager > div {
+  min-height: 15%;
+  align-items: center;
+}
+#todomanager > div {
+  min-height: 15%;
+  align-items: center;
+}
+#tododescription {
+  flex-grow: 2;
+}
+.btn {
+  background-color: #16425b;
+}
+li {
+  display: flex;
+  word-break: break-all;
+}
+#foldermanager {
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  display: none;
+}
