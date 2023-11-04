@@ -1,5 +1,4 @@
-console.log("supmmmmmmmm");
-window.onload = () => {
+window.onload = function () {
   if (localStorage.getItem("hasCodeRunBefore") === null) {
     folderarray = [];
     todoarray = [];
