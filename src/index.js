@@ -1,5 +1,6 @@
+
 window.onload = function () {
-  if (localStorage.getItem("hasCodeRunBefore") === null) {
+  if (localStorage.getItem("hasCodeRunBefore") === false || localStorage.getItem("hasCodeRunBefore") === null) {
     folderarray = [];
     todoarray = [];
     savetolocalstorage(todoarray, folderarray);
