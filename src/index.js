@@ -1,8 +1,8 @@
-
+folderarray = []
+todoarray = []
 window.onload = function () {
-  if (localStorage.getItem("hasCodeRunBefore") === false || localStorage.getItem("hasCodeRunBefore") === null) {
-    folderarray = [];
-    todoarray = [];
+  if (localStorage.getItem("hasCodeRunBefore") === null) {
+ 
     savetolocalstorage(todoarray, folderarray);
     localStorage.setItem("hasCodeRunBefore", true);
   }
@@ -168,6 +168,7 @@ function retrievefromlocalstorage() {
 }
 
 function startupfolders() {
+
   folderarray.forEach((element) => {
     foldername = element;
     folderitem = document.createElement("li");
