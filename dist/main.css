@@ -47,10 +47,14 @@ li {
 #foldermanager {
   overflow-y: scroll;
 }
+#todomanager {
+  overflow-y: scroll;
+}
 ::-webkit-scrollbar {
   display: none;
 }
-.selectedfolder {
+.selectedfolder,
+.selectedtodo {
   background-color: aquamarine;
 }
 .btn-secondary {
