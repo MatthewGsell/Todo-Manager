@@ -1,5 +1,5 @@
-folderarray = []
 todoarray = []
+folderarray = []
 window.onload = function () {
   if (localStorage.getItem("hasCodeRunBefore") === null) {
  
@@ -85,7 +85,7 @@ function TodoCreation() {
       this.priority =
         document.querySelector("#priorityselect").options[
           this.priorityvalue
-        ].text;
+        ].innerText;
       this.date = document.querySelector("#dateselect").value;
       this.folder = document.querySelector(".selectedfolder").textContent;
       console.log();
@@ -98,7 +98,7 @@ function TodoCreation() {
           a.description === todoarray[i].description
         ) {
           alert("Todo already posted!");
-          break;
+          return;
         } else if (i === todoarray.length - 1) {
           todoarray.push(a);
           savetolocalstorage(todoarray, folderarray);
@@ -132,6 +132,11 @@ function deletetodo() {
       folderarray.splice(index, 1);
     }
   });
+  todoarray.forEach((element, index) => {
+    if (selectedtodo.innerText === element.description + " " + element.priority + " " + element.date); {
+      todoarray.splice(index, 1)
+    }
+  })
   selectedtodo.remove();
   d = document.querySelector("#deletetodobutton");
   d.classList.add("hidden");
@@ -160,8 +165,15 @@ function savetolocalstorage(todoarray, folderarray) {
 }
 function retrievefromlocalstorage() {
   try {
-    todoarray = JSON.parse(localStorage.getItem("todoarray"));
-    folderarray = JSON.parse(localStorage.getItem("folderarray"));
+    todosfromstorage = JSON.parse(localStorage.getItem("todoarray"));
+    foldersfromstorage = JSON.parse(localStorage.getItem("folderarray"));
+    if(foldersfromstorage.length > 0) {
+      folderarray = foldersfromstorage
+    } else 
+    if(todosfromstorage.length > 0) {
+      todoarray = todosfromstorage
+    }
+
   } catch {
     return true;
   }
