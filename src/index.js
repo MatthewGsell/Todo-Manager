@@ -31,8 +31,6 @@ function FolderScreenCreation() {
 }
 function FolderCreation() {
   foldername = document.querySelector("#foldernameinput").value;
-  console.log(foldername);
-  console.log(folderarray);
   if (folderarray.includes(foldername) === true) {
     alert("Folder with that name already exists");
   } else if (foldername != null) {
@@ -59,8 +57,6 @@ function highlightfolder(e) {
 function deletefolder(e) {
   d = document.querySelector("#deletefolderbutton");
   selected = document.querySelector(".selectedfolder");
-  console.log(folderarray);
-  console.log(selected.innerText);
   folderarray.forEach((element, index) => {
     if (element === selected.innerText) {
       folderarray.splice(index, 1);
@@ -77,6 +73,7 @@ function deletefolder(e) {
   savetolocalstorage();
 }
 function TodoCreation() {
+  const newkey = crypto.randomUUID()
   selectedfolder = document.querySelector(".selectedfolder");
   if (selectedfolder != null) {
     function TodoObject() {
@@ -88,7 +85,7 @@ function TodoCreation() {
         ].innerText;
       this.date = document.querySelector("#dateselect").value;
       this.folder = document.querySelector(".selectedfolder").textContent;
-      console.log();
+      this.id = newkey;
     }
     a = new TodoObject();
     if (todoarray.length != 0 && a.date != "") {
@@ -110,7 +107,6 @@ function TodoCreation() {
       savetolocalstorage(todoarray, folderarray);
     }
 
-    console.log(todoarray);
   } else {
     alert("pleaseselectfolder");
   }
@@ -127,29 +123,32 @@ function highlighttodos(e) {
 }
 function deletetodo() {
   selectedtodo = document.querySelector(".selectedtodo");
-  folderarray.forEach((element, index) => {
-    if (element === selectedtodo.innerText) {
-      folderarray.splice(index, 1);
-    }
+  folderarray.forEach(() => {
+    todoarray.forEach((todo, index) => {
+      const selectedfolder = document.querySelector('.selectedfolder')
+      if (selectedtodo.innerText === todo.description + " " + todo.priority + " " + todo.date && todo.id === selectedtodo.id ) {
+        todoarray.splice(index, 1)
+        folderarray.splice(index, 1);
+      }
+    })
   });
-  todoarray.forEach((element, index) => {
-    if (selectedtodo.innerText === element.description + " " + element.priority + " " + element.date); {
-      todoarray.splice(index, 1)
-    }
-  })
+ 
+  const selectedfolder = document.querySelector('.selectedfolder')
+  selectedfolder.classList.add('recentdelete')
   selectedtodo.remove();
   d = document.querySelector("#deletetodobutton");
   d.classList.add("hidden");
 }
 
 function rendertodos() {
+  const recentdelete = document.querySelector('.recentdelete')
   todolist = document.querySelector("#todolistgroup");
   todolist.innerHTML = "";
   selectedvalue = document.querySelector(".selectedfolder").textContent;
-  console.log(selectedvalue);
   todoarray.forEach((element) => {
-    if (element.folder === selectedvalue) {
+    if (element.folder === selectedvalue ) {
       listitem = document.createElement("li");
+      listitem.id = element.id
       listitem.classList.add("list-group-item");
       listitem.addEventListener("click", highlighttodos);
       listitem.innerText =
@@ -157,6 +156,7 @@ function rendertodos() {
       todolist.appendChild(listitem);
     }
   });
+  recentdelete.classList.remove('recentdelete')
 }
 
 function savetolocalstorage(todoarray, folderarray) {

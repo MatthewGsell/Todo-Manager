@@ -63,3 +63,18 @@ li {
 .hidden {
   display: none;
 }
+button {
+  border-radius: 5px !important;
+}
+
+@media only screen and (max-width: 950px) {
+  #createto > .input-group {
+    flex-direction: column;
+
+  }
+  input, select {
+    width: 100% !important;
+  }
+  
+
+}
